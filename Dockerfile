@@ -47,19 +47,5 @@ ENV HOME=/root \
     DISPLAY_HEIGHT=768 \
     RUN_XTERM=yes \
     RUN_UNITY=yes
-
-RUN adduser ubuntu
-
-RUN echo "ubuntu:ubuntu" | chpasswd && \
-    adduser ubuntu sudo && \
-    sudo usermod -a -G sudo ubuntu
-
-RUN wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && apt install ./teamviewer_amd64.deb
-
-COPY . /app
-
-RUN chmod +x /app/conf.d/websockify.sh
-
-USER ubuntu
-
+    
 CMD ["/app/run.sh"]
